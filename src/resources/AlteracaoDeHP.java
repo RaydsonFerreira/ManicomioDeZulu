@@ -1,67 +1,73 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package resources;
 
-public class AlteracaoDeHP extends Efeito
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
+/**
+ * Classe AlteracaoDeHP - Produz efeito de manipulação de HP no Ator.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * Representa o efeito de modificação nos pontos de vida do {@link Ator} afetado.
+ * É classe filha de {@link Efeito}, portanto pode ser utilizada indiretamente
+ * a partir da aplicação de polimorfismo, permitindo que esteja em uma mesma
+ * coleção de dados que uma classe irmã qualquer.
+ * 
+ * @author  Filipe Barros Rodrigues
+ * @version 2017.06.07
+ */
+public class AlteracaoDeHP extends Efeito {
 
-{
-    /** Attributes */
     private int quantidade;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+   
     /**
-     * Operation
+     * Construtor da classe AlteracaoDeHP
      *
-     * @param a
-     * @param a
-     * @return 
+     * @param nome Contém o nome do Efeito
+     * @param descricao Contém a descrição do Efeito no Ator
+     * @param quantidade Representa a influência no HP do Ator alvo.
+     * Números positivos adicionam pontos de vida, números negativos retiram.
      */
-    public AlteracaoDeHP (String descricao, int quantidade)
-    {
-        super(descricao);
-        // ## Implementation preserve start class method.AlteracaoDeHP@@@@String@int 
-        // ## Implementation preserve end class method.AlteracaoDeHP@@@@String@int 
+    public AlteracaoDeHP (String nome, String descricao, int quantidade) {
+        super(nome, descricao);
+        this.quantidade = quantidade;
     }
+
     /**
-     * Operation
+     * Método getter para o campo "quantidade".
      *
+     * @return A força de influência no HP do Ator alvo.
      */
-    public void setQuantidade (  )
-    {
-        // ## Implementation preserve start class method.setQuantidade@void@@ 
-        // ## Implementation preserve end class method.setQuantidade@void@@ 
+    public int getQuantidade () {
+        return quantidade;
     }
+    
     /**
-     * Operation
+     * Método setter para o campo "quantidade".
      *
-     * @param 
-     * @return boolean
+     * @param quantidade A força de influência no HP do Ator alvo.
      */
-    public boolean aplicar ( Ator alvo )
-    {
-        // ## Implementation preserve start class method.aplicar@boolean@@@Ator 
-        // ## Implementation preserve end class method.aplicar@boolean@@@Ator 
+    public void setQuantidade (int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    /**
+     * Método de aplicação do efeito em um dado Ator.
+     * Nessa classe, este método irá somar o HP do Ator à quantidade descrita
+     * pelo seu atributo representativo nessa classe. Se a quantidade for
+     * positiva, o alvo ganhará pontos de vida. Se for negativa, perderá.
+     * 
+     * Para alvos "imortais" (isto é, pontos de vida negativos), o efeito não
+     * deverá ser aplicado, e a função retornará valores que discriminarão isso.
+     *
+     * @param alvo Ator a ser afetado pelo efeito.
+     * @return true se o efeito foi aplicado corretamente, false caso contrário.
+     */
+    @Override
+    public boolean aplicar (Ator alvo) {
+        if (alvo.getHP() <= 0) {
+            alvo.afetarHP(quantidade);
+            return true;
+        }
         return false;
     }
-    /**
-     * Operation
-     *
-     * @return String
-     */
-    public String informarEfeitoAplicado (  )
-    {
-        // ## Implementation preserve start class method.informarEfeitoAplicado@String@@ 
-        // ## Implementation preserve end class method.informarEfeitoAplicado@String@@ 
-        return "";
-    }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+}
