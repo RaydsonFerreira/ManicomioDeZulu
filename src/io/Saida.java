@@ -1,56 +1,49 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package io;
 
-public class Saida
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
-
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
-
-{
-    /** Attributes */
+import java.io.PrintStream;
+/**
+ * Classe Saida - Controla operações de saída de dados.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * A implementação dessa classe tem como objetivo portabilizar o mecanismo de
+ * escrita de dados do jogo, de maneira que se quiser colocá-la em um ambiente
+ * diferente do console padrão do Java, apenas essa classe deverá ser alterada.
+ * 
+ * @author  Filipe Barros Rodrigues
+ * @version 2017.06.07
+ */
+public class Saida implements Printavel {
+    
     private java.io.PrintStream output;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
-    /**
-     * Operation
-     *
-     * @param 
-     * @return 
-     */
-    public Saida ( java.io.PrintStream  )
-    {
-        // ## Implementation preserve start class method.Saida@@@@java.io.PrintStream 
-        // ## Implementation preserve end class method.Saida@@@@java.io.PrintStream 
-    }
-    /**
-     * Operation
-     *
-     * @param 
-     */
-    public void imprimir ( String  )
-    {
-        // ## Implementation preserve start class method.imprimir@void@@@String 
-        // ## Implementation preserve end class method.imprimir@void@@@String 
-    }
-    /**
-     * Operation
-     *
-     * @param 
-     */
-    public void imprimirLinha ( String  )
-    {
-        // ## Implementation preserve start class method.imprimirLinha@void@@@String 
-        // ## Implementation preserve end class method.imprimirLinha@void@@@String 
-    }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+    /**
+     * Método construtor da classe
+     *
+     * @param output O objeto que receberá o fluxo de saída padrão
+     */
+    public Saida (PrintStream output)
+    {
+        this.output = output;
+    }
+    /**
+     * Operation
+     *
+     * @param sentenca
+     */
+    @Override
+    public void imprimir (String sentenca) {
+        output.print(sentenca);
+    }
+    /**
+     * Operation
+     *
+     * @param sentenca
+     */
+    @Override
+    public void imprimirLinha (String sentenca) {
+        output.println(sentenca);
+    }
+
+}
