@@ -12,9 +12,9 @@ public class EstadoDeJogo
 
 {
     /** Attributes */
-    public int NAVEGANDO = 0;
-    public int CONVERSANDO = 1;
-    public int ATACANDO = 2;
+    public static final int NAVEGANDO = 0;
+    public static final int CONVERSANDO = 1;
+    public static final int ATACANDO = 2;
     private int estadoAtual;
     // ## Implementation preserve start class attributes. 
     // ## Implementation preserve end class attributes. 
