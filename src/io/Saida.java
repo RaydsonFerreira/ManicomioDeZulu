@@ -23,8 +23,7 @@ public class Saida implements Printavel {
      *
      * @param output O objeto que receberá o fluxo de saída padrão
      */
-    public Saida (PrintStream output)
-    {
+    public Saida (PrintStream output) {
         this.output = output;
     }
     /**
