@@ -1,48 +1,49 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import Habilidade;
-import Ator;
-import Item;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package resources;
 
-public abstract class Ator
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
+/**
+ * Classe Abstrata Ator - A generalização de todo personagem do jogo.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * Essa classe é o modelo padrão de todo personagem do jogo, desde os NPCs
+ * inimigos até mesmo o próprio personagem principal. Todo personagem está
+ * inserido em algum {@link Ambiente}, com exceção do {@link Cesar}, o
+ * personagem principal.
+ * 
+ * @author  Filipe Barros Rodrigues
+ * @version 2017.06.07
+ */
+public abstract class Ator {
 
-{
-    /** Attributes */
     private String nome;
     private int hp;
     private Habilidade habilidade;
     private List<Item> bagagem;
     private boolean aliado;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private Item unnamed;
-    private Habilidade unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+
     /**
-     * Operation
+     * Construtor padrão da classe Ator.
      *
-     * @param 
-     * @param 
-     * @param 
-     * @param 
-     * @param 
-     * @param 
-     * @return 
+     * @param nome O nome do Ator.
+     * @param hp A quantidade de pontos de vida do Ator. Se for igual a zero,
+     * está morto. Maior que zero, vivo. Menor que zero é imortal.
+     * @param habilidade A habilidade especial do Ator.
+     * @param bagagem Uma {@link java.util.List} de {@link Item}s portados pelo Ator.
+     * @param aliado Se o Ator é aliado do protagonista ({@link Cesar}), true. Senão, false.
      */
-    public Ator ( String , int , Habilidade , List<Item> , boolean , boolean  )
-    {
-        // ## Implementation preserve start class method.Ator@@@@String@int@Habilidade@List<Item>@boolean@boolean 
-        // ## Implementation preserve end class method.Ator@@@@String@int@Habilidade@List<Item>@boolean@boolean 
+    public Ator (String nome, int hp, Habilidade habilidade, List<Item> bagagem, boolean aliado) {
+        this.nome = nome;
+        this.hp = hp;
+        this.habilidade = habilidade;
+        this.bagagem = new ArrayList<>(bagagem);
+        this.aliado = aliado;
     }
+    
     /**
      * Operation
      *
@@ -50,10 +51,28 @@ public abstract class Ator
      * @param 
      * @return boolean
      */
-    public boolean darItem ( String , Alvo  )
-    {
-        // ## Implementation preserve start class method.darItem@boolean@@@String@Alvo 
-        // ## Implementation preserve end class method.darItem@boolean@@@String@Alvo 
+    private int getItemPorNome (String nomeDoItem) {
+        int encontrado = -1;
+        int i = 0;
+        
+        while (i < bagagem.size() && encontrado < 0) {
+            if (nomeDoItem.equalsIgnoreCase((Item) bagagem.get(i).getNome())) {
+                encontrado = i;
+            } 
+        }
+        
+        return encontrado;
+    }
+    
+    /**
+     * Operation
+     *
+     * @param 
+     * @param 
+     * @return boolean
+     */
+    public boolean darItem (String nomeDoItem, Ator alvo) {
+        
     }
     /**
      * Operation
