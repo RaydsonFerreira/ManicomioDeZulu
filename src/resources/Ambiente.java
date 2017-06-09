@@ -64,20 +64,25 @@ public class Ambiente
      * @return String
      */
     public String getListaItens (){
-        String itens = "";
-        for (){
-            
+        String lista = "" ;
+        for (Item item : itens) {
+            lista += item.getNome() + "\n";
         }
+        lista += "\n";
+        return lista;
     }
     /**
      * Operation
      *
      * @return String
      */
-    public String getListaAtores (  )
-    {
-        // ## Implementation preserve start class method.getListaAtores@String@@ 
-        // ## Implementation preserve end class method.getListaAtores@String@@ 
+    public String getListaAtores () { 
+        String lista = "" ;
+        for (Ator ator : atores) {
+            lista += ator.getNome() + "\n";
+        }
+        lista += "\n";
+        return lista;
     }
     /**
      * Operation
@@ -85,10 +90,8 @@ public class Ambiente
      * @param 
      * @return Item
      */
-    public Item recolherItem ( String  )
-    {
-        // ## Implementation preserve start class method.recolherItem@Item@@@String 
-        // ## Implementation preserve end class method.recolherItem@Item@@@String 
+    public Item recolherItem ( String  ) {
+    
     }
     /**
      * Operation

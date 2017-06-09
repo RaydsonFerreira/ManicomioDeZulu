@@ -1,8 +1,13 @@
 package resources;
 
 /**
+ *Classe Comando - Fornece um conjunto de constantes.
  *
- * @author biiirl
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto. 
+ * 
+ * @author  Raydson Ferreira Carlota
+ * @version 2017.06.09
  */
 public class Atributo {
 
