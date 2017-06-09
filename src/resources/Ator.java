@@ -1,8 +1,9 @@
 package resources;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import static resources.Atributo.*;
+import static resources.Resultado.*;
 
 /**
  * Classe Abstrata Ator - A generalização de todo personagem do jogo.
@@ -21,7 +22,7 @@ import java.util.List;
 public abstract class Ator {
 
     private String nome;
-    private int hp;
+    private List<Integer> atributos;
     private Habilidade habilidade;
     private List<Item> bagagem;
     private boolean aliado;
@@ -32,16 +33,35 @@ public abstract class Ator {
      * @param nome O nome do Ator.
      * @param hp A quantidade de pontos de vida do Ator. Se for igual a zero,
      * está morto. Maior que zero, vivo. Menor que zero é imortal.
+     * @param capacidade Capacidade máxima de carga de itens (em n° de itens).
      * @param habilidade A habilidade especial do Ator.
      * @param bagagem Uma {@link java.util.List} de {@link Item}s portados pelo Ator.
      * @param aliado Se o Ator é aliado do protagonista ({@link Cesar}), true. Senão, false.
      */
-    public Ator (String nome, int hp, Habilidade habilidade, List<Item> bagagem, boolean aliado) {
+    public Ator (String nome, int hp, int capacidade, Habilidade habilidade, List<Item> bagagem, boolean aliado) {
         this.nome = nome;
-        this.hp = hp;
+        this.atributos = new ArrayList<>();
+        this.atributos.add(hp);
+        this.atributos.add(capacidade);
         this.habilidade = habilidade;
         this.bagagem = new ArrayList<>(bagagem);
         this.aliado = aliado;
+    }
+    
+    /**
+     * Operation
+     *
+     * @param 
+     * @return boolean
+     */
+    private Resultado afetarOutroAtor (List<Efeito> efeitos, Ator alvo) {
+        for (Efeito efeito : efeitos) {
+            Resultado resultado = efeito.aplicar(alvo);
+            if (resultado != SUCESSO) {
+                return resultado;
+            }
+        }
+        return SUCESSO;
     }
     
     /**
@@ -56,9 +76,10 @@ public abstract class Ator {
         int i = 0;
         
         while (i < bagagem.size() && encontrado < 0) {
-            if (nomeDoItem.equalsIgnoreCase((Item) bagagem.get(i).getNome())) {
+            if (nomeDoItem.equalsIgnoreCase(bagagem.get(i).getNome())) {
                 encontrado = i;
-            } 
+            }
+            i++;
         }
         
         return encontrado;
@@ -71,8 +92,15 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    public boolean darItem (String nomeDoItem, Ator alvo) {
+    public Resultado darItem (String nomeDoItem, Ator alvo) {
+        int index = getItemPorNome(nomeDoItem);
+        if (index >= 0) {
+            Item item = bagagem.get(index);
+            bagagem.remove(index);
+            return alvo.coletarItem(item);
+        }
         
+        return ITEM_NAO_ENCONTRADO;
     }
     /**
      * Operation
@@ -81,10 +109,15 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    public boolean usarItem ( String , Ator  )
-    {
-        // ## Implementation preserve start class method.usarItem@boolean@@@String@Ator 
-        // ## Implementation preserve end class method.usarItem@boolean@@@String@Ator 
+    public Resultado usarItem (String nomeDoItem, Ator alvo) {
+        int index = getItemPorNome(nomeDoItem);
+        if (index >= 0) {
+            Item item = bagagem.get(index);
+            bagagem.remove(index);
+            return afetarOutroAtor(item.getEfeitos(), alvo);
+        }
+        
+        return ITEM_NAO_ENCONTRADO;
     }
     /**
      * Operation
@@ -92,10 +125,12 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    public boolean coletarItem ( Item  )
-    {
-        // ## Implementation preserve start class method.coletarItem@boolean@@@Item 
-        // ## Implementation preserve end class method.coletarItem@boolean@@@Item 
+    public Resultado coletarItem (Item item) {
+        if (bagagem.size() <= atributos.get(CAPACIDADE.posicao())) {
+            bagagem.add(item);
+            return SUCESSO;
+        }
+        return BAGAGEM_LOTADA;
     }
     /**
      * Operation
@@ -103,10 +138,8 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    public boolean usarHabilidade ( Ator  )
-    {
-        // ## Implementation preserve start class method.usarHabilidade@boolean@@@Ator 
-        // ## Implementation preserve end class method.usarHabilidade@boolean@@@Ator 
+    public Resultado usarHabilidade (Ator alvo) {
+        return alvo.afetarOutroAtor(habilidade.getEfeitos(), alvo);
     }
     /**
      * Operation
@@ -114,10 +147,24 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    public boolean afetarHP ( int  )
-    {
-        // ## Implementation preserve start class method.afetarHP@boolean@@@int 
-        // ## Implementation preserve end class method.afetarHP@boolean@@@int 
+    public Resultado afetarHP (int quantidade) {
+        int hp = atributos.get(HP.posicao());
+        if (hp > 0) {
+            if (-quantidade < hp) {
+                hp += quantidade;
+                if (quantidade > 0) {
+                    return ATOR_CURADO;
+                } else {
+                    return ATOR_FERIDO;
+                }
+            } else {
+                hp = 0;
+                return ATOR_ASSASSINADO;
+            }
+        } else if (hp == 0) {
+            return ATOR_MORTO;
+        } 
+        return ATOR_IMORTAL;
     }
     /**
      * Operation
@@ -125,14 +172,14 @@ public abstract class Ator {
      * @param 
      * @return boolean
      */
-    abstract public boolean receberDano ( int  );
+    public abstract Resultado afetarAtributo (int atributo, int quantidade);
     /**
      * Operation
      *
      * @param 
      * @return boolean
      */
-    public boolean interagir ( Ator  )
+    public Resultado interagir ( Ator  )
     {
         // ## Implementation preserve start class method.interagir@boolean@@@Ator 
         // ## Implementation preserve end class method.interagir@boolean@@@Ator 
@@ -142,10 +189,17 @@ public abstract class Ator {
      *
      * @return String
      */
-    public String getStatus (  )
-    {
-        // ## Implementation preserve start class method.getStatus@String@@ 
-        // ## Implementation preserve end class method.getStatus@String@@ 
+    public String getStatus () {
+        int hp = atributos.get(HP.posicao());
+        int quantidadeDeItens = bagagem.size();
+        int capacidade = atributos.get(CAPACIDADE.posicao());
+        
+        String status = "";
+        status += "Nome:          " + nome + ((hp == 0) ? (" (MORTO)") : ("")) + "\n";
+        status += "HP:            " + ((hp < 0) ? ("infinito") : (hp)) + "\n";
+        status += "Carga no inv.: " + quantidadeDeItens + "/" + capacidade + "\n";
+        status += "Habilidade:    " + habilidade.getNome() + "\n";
+        return status;
     }
     /**
      * Operation
@@ -167,6 +221,18 @@ public abstract class Ator {
         // ## Implementation preserve start class method.getHP@int@@ 
         // ## Implementation preserve end class method.getHP@int@@ 
     }
+    
+    /**
+     * Operation
+     *
+     * @return int
+     */
+    public int getCapacidade (  )
+    {
+        // ## Implementation preserve start class method.getHP@int@@ 
+        // ## Implementation preserve end class method.getHP@int@@ 
+    }
+    
     /**
      * Operation
      *

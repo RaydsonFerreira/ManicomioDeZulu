@@ -1,27 +1,15 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import Efeito;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package resources;
 
-public class Item
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
+import java.util.Collections;
+import java.util.List;
 
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
-
-{
+public class Item {
+    
     /** Attributes */
     private String nome;
     private String descricao;
     private List<Efeito> efeitos;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private Efeito unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+  
     /**
      * Operation
      *
@@ -30,44 +18,39 @@ public class Item
      * @param 
      * @return 
      */
-    public Item ( String , String , List<Efeito>  )
-    {
-        // ## Implementation preserve start class method.Item@@@@String@String@List<Efeito> 
-        // ## Implementation preserve end class method.Item@@@@String@String@List<Efeito> 
+    public Item (String nome, String descricao, List<Efeito> efeitos) {
+        this.nome = nome;
+        this.descricao = descricao;
+        for (Efeito efeito : efeitos) {
+            this.efeitos.add(efeito);
+        }
     }
+    
     /**
      * Operation
      *
      * @return String
      */
-    public String getNome (  )
-    {
-        // ## Implementation preserve start class method.getNome@String@@ 
-        // ## Implementation preserve end class method.getNome@String@@ 
+    public String getNome () {
+        return this.nome;
     }
+    
     /**
      * Operation
      *
      * @return String
      */
-    public String getDescricao (  )
-    {
-        // ## Implementation preserve start class method.getDescricao@String@@ 
-        // ## Implementation preserve end class method.getDescricao@String@@ 
+    public String getDescricao () {
+        return this.getDescricao();
     }
+    
     /**
      * Operation
      *
      * @return List<Efeito>
      */
-    public List<Efeito> getEfeitos (  )
-    {
-        // ## Implementation preserve start class method.getEfeitos@List<Efeito>@@ 
-        // ## Implementation preserve end class method.getEfeitos@List<Efeito>@@ 
+    public List<Efeito> getEfeitos () {
+        return Collections.unmodifiableList(efeitos);
     }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+}
