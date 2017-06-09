@@ -1,10 +1,4 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import Ambiente;
-import Item;
-import Ator;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package resources;
 
 public class Ambiente
 // ## Implementation preserve start class extends. 
