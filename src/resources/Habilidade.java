@@ -1,62 +1,36 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import Ator;
-import Efeito;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package resources;
 
-public class Habilidade
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import static resources.Resultado.*;
 
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
+public class Habilidade {
 
-{
-    /** Attributes */
     private String nome;
     private List<Efeito> efeitos;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private Efeito unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
-    /**
-     * Operation
-     *
-     * @param 
-     * @return 
-     */
-    public Habilidade ( List<Efeito>  )
-    {
-        // ## Implementation preserve start class method.Habilidade@@@@List<Efeito> 
-        // ## Implementation preserve end class method.Habilidade@@@@List<Efeito> 
+
+    public Habilidade (String nome, List<Efeito> efeitos) {
+        this.nome = nome;
+        this.efeitos = new ArrayList<>(efeitos);
     }
-    /**
-     * Operation
-     *
-     * @param 
-     * @return boolean
-     */
-    public boolean afetar ( Ator  )
-    {
-        // ## Implementation preserve start class method.afetar@boolean@@@Ator 
-        // ## Implementation preserve end class method.afetar@boolean@@@Ator 
-    }
+    
     /**
      * Operation
      *
      * @return String
      */
-    public String getNome (  )
-    {
-        // ## Implementation preserve start class method.getNome@String@@ 
-        // ## Implementation preserve end class method.getNome@String@@ 
+    public String getNome () {
+        return nome;
     }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
+    
+    /**
+     * Operation
+     *
+     * @return String
+     */
+    public List<Efeito> getEfeitos () {
+        return Collections.unmodifiableList(efeitos);
+    }
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+}
