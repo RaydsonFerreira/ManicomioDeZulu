@@ -6,9 +6,10 @@ import java.util.List;
 public class Item {
     
     /** Attributes */
-    private String nome;
-    private String descricao;
+    private final String nome;
+    private final String descricao;
     private List<Efeito> efeitos;
+    private final boolean consumivel;
   
     /**
      * Operation
@@ -18,12 +19,13 @@ public class Item {
      * @param 
      * @return 
      */
-    public Item (String nome, String descricao, List<Efeito> efeitos) {
+    public Item (String nome, String descricao, List<Efeito> efeitos, boolean consumivel) {
         this.nome = nome;
         this.descricao = descricao;
         for (Efeito efeito : efeitos) {
             this.efeitos.add(efeito);
         }
+        this.consumivel = consumivel;
     }
     
     /**
@@ -51,6 +53,15 @@ public class Item {
      */
     public List<Efeito> getEfeitos () {
         return Collections.unmodifiableList(efeitos);
+    }
+    
+    /**
+     * Operation
+     *
+     * @return List<Efeito>
+     */
+    public boolean ehConsumivel () {
+        return consumivel;
     }
 
 }
