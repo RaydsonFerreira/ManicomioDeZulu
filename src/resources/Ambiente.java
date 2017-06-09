@@ -1,5 +1,12 @@
 package resources;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 public class Ambiente
 // ## Implementation preserve start class extends. 
 // ## Implementation preserve end class extends. 
@@ -9,18 +16,11 @@ public class Ambiente
 
 {
     /** Attributes */
-    private String nome;
     private String descricao;
     private HashMap<String, Ambiente> saidas;
     private List<Item> itens;
     private List<Ator> atores;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private Item unnamed;
-    private Ator unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+    private boolean hostil;
     /**
      * Operation
      *
@@ -28,10 +28,9 @@ public class Ambiente
      * @param 
      * @return 
      */
-    public Ambiente ( String , String  )
-    {
-        // ## Implementation preserve start class method.Ambiente@@@@String@String 
-        // ## Implementation preserve end class method.Ambiente@@@@String@String 
+    public Ambiente (String descricao) {
+        this.descricao = descricao;
+        
     }
     /**
      * Operation
@@ -39,41 +38,36 @@ public class Ambiente
      * @param 
      * @param 
      */
-    public void ajustarSaidas ( String , Ambiente  )
-    {
-        // ## Implementation preserve start class method.ajustarSaidas@void@@@String@Ambiente 
-        // ## Implementation preserve end class method.ajustarSaidas@void@@@String@Ambiente 
+    public void ajustarSaidas (String comando, Ambiente ambiente) {
     }
     /**
      * Operation
      *
      * @return String
      */
-    public String getDescricao (  )
-    {
-        // ## Implementation preserve start class method.getDescricao@String@@ 
-        // ## Implementation preserve end class method.getDescricao@String@@ 
+    
+    public String getDescricao () {
+        return this.descricao;
     }
     /**
      * Operation
      *
-     * @param 
+     * @param direcao
      * @return Ambiente
      */
-    public Ambiente getAmbiente ( String  )
-    {
-        // ## Implementation preserve start class method.getAmbiente@Ambiente@@@String 
-        // ## Implementation preserve end class method.getAmbiente@Ambiente@@@String 
+    public Ambiente getAmbiente (String direcao) {
+        return saidas.get(direcao);
     }
     /**
      * Operation
      *
      * @return String
      */
-    public String getListaItens (  )
-    {
-        // ## Implementation preserve start class method.getListaItens@String@@ 
-        // ## Implementation preserve end class method.getListaItens@String@@ 
+    public String getListaItens (){
+        String itens = "";
+        for (){
+            
+        }
     }
     /**
      * Operation
@@ -117,9 +111,7 @@ public class Ambiente
         // ## Implementation preserve start class method.selecionarAtor@Ator@@@String 
         // ## Implementation preserve end class method.selecionarAtor@Ator@@@String 
     }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
+    public boolean ehAmbienteHostil(){
+        return this.hostil;
+    }
 }
-
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
