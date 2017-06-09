@@ -1,126 +1,117 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import Entrada;
-import Saida;
-import Ambiente;
-import Cesar;
-import EstadoDeJogo;
-import Comando;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
 
-public class ManicomioDeZulu
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
+import io.Entrada;
+import io.Saida;
+import resources.Ambiente;
 
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
 
-{
+/**
+ *Classe Comando - Fornece um conjunto de constantes.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto. 
+ * 
+ * @author  Raydson Ferreira Carlota
+ * @version 2017.06.09
+ */
+public class ManicomioDeZulu {
     /** Attributes */
     private Entrada entrada;
     private Saida saida;
     private Ambiente ambiente;
     private Cesar protagonista;
     private EstadoDeJogo status;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private EstadoDeJogo unnamed;
-    private Ambiente unnamed;
-    private Saida unnamed;
-    private Entrada unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+
     /**
      * Operation
      *
      * @return 
      */
-    public ManicomioDeZulu (  )
-    {
-        // ## Implementation preserve start class method.ManicomioDeZulu@@@ 
-        // ## Implementation preserve end class method.ManicomioDeZulu@@@ 
+    public ManicomioDeZulu () {
+        
     }
     /**
      * Operation
      *
      */
-    public void jogar (  )
-    {
-        // ## Implementation preserve start class method.jogar@void@@ 
-        // ## Implementation preserve end class method.jogar@void@@ 
-    }
-    /**
-     * Operation
-     *
-     */
-    private void criarAmbientes (  )
-    {
-        // ## Implementation preserve start class method.criarAmbientes@void@@ 
-        // ## Implementation preserve end class method.criarAmbientes@void@@ 
-    }
-    /**
-     * Operation
-     *
-     * @param 
-     * @return boolean
-     */
-    private boolean processarComando ( Comando  )
-    {
-        // ## Implementation preserve start class method.processarComando@boolean@@@Comando 
-        // ## Implementation preserve end class method.processarComando@boolean@@@Comando 
-    }
-    /**
-     * Operation
-     *
-     */
-    private void imprimirBoasVindas (  )
-    {
-        // ## Implementation preserve start class method.imprimirBoasVindas@void@@ 
-        // ## Implementation preserve end class method.imprimirBoasVindas@void@@ 
-    }
-    /**
-     * Operation
-     *
-     */
-    private void imprimirAjuda (  )
-    {
-        // ## Implementation preserve start class method.imprimirAjuda@void@@ 
-        // ## Implementation preserve end class method.imprimirAjuda@void@@ 
-    }
-    /**
-     * Operation
-     *
-     * @param 
-     */
-    private void irParaAmbiente ( Comando  )
-    {
-        // ## Implementation preserve start class method.irParaAmbiente@void@@@Comando 
-        // ## Implementation preserve end class method.irParaAmbiente@void@@@Comando 
-    }
-    /**
-     * Operation
-     *
-     */
-    private void exibirAmbienteAtual (  )
-    {
-        // ## Implementation preserve start class method.exibirAmbienteAtual@void@@ 
-        // ## Implementation preserve end class method.exibirAmbienteAtual@void@@ 
-    }
-    /**
-     * Operation
-     *
-     * @return boolean
-     */
-    private boolean sair (  )
-    {
-        // ## Implementation preserve start class method.sair@boolean@@ 
-        // ## Implementation preserve end class method.sair@boolean@@ 
-    }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
+    public void jogar () {
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+    }
+    /**
+     * Operation
+     *
+     */
+    private void criarAmbientes () {
+        Ambiente esquina_Fortran_Python, esquina_Fortran_Cobol, 
+                esquina_Fortran_Lua, esquina_Fortran_Snobol,
+                esquina_Smaltalk_Python, esquina_Smaltalk_Cobol, 
+                esquina_Smaltalk_Lua, esquina_Smaltalk_Snobol,
+                esquina_Haskell_Python, esquina_Haskell_Cobol, 
+                esquina_Haskell_Lua, esquina_Haskell_Snobol,
+                esquina_Prolog_Python, esquina_Prolog_Cobol, 
+                esquina_Prolog_Lua, esquina_Prolog_Snobol;
+        
+        esquina_Fortran_Python = new Ambiente ();
+        esquina_Fortran_Cobol,
+        esquina_Fortran_Lua,
+        esquina_Fortran_Snobol,
+        esquina_Smaltalk_Python,
+        esquina_Smaltalk_Cobol, 
+        esquina_Smaltalk_Lua,
+        esquina_Smaltalk_Snobol,
+        esquina_Haskell_Python,
+        esquina_Haskell_Cobol, 
+        esquina_Haskell_Lua,
+        esquina_Haskell_Snobol,
+        esquina_Prolog_Python, 
+        esquina_Prolog_Cobol, 
+        esquina_Prolog_Lua,
+        esquina_Prolog_Snobol
+        
+    }
+    /**
+     * Operation
+     *
+     * @param 
+     * @return boolean
+     */
+    private boolean processarComando (Comando comando) {
+    
+    }
+    /**
+     * Operation
+     *
+     */
+    private void imprimirBoasVindas () {
+    
+    }
+    /**
+     * Operation
+     *
+     */
+    private void imprimirAjuda () {
+
+    }
+    /**
+     * Operation
+     *
+     * @param 
+     */
+    private void irParaAmbiente (Comando comando){
+    
+    }
+    /**
+     * Operation
+     *
+     */
+    private void exibirAmbienteAtual () {
+        
+    }
+    /**
+     * Operation
+     *
+     * @return boolean
+     */
+    private boolean sair () {
+        return false;
+    }
+}
