@@ -1,7 +1,7 @@
 package resources;
 
 /**
- * Classe Abstrata Efeito - Controla operações de saída de dados.
+ * Classe Abstrata Efeito - Modelo padrão de Efeitos em Atributos.
  *
  * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
  * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
@@ -54,6 +54,6 @@ public abstract class Efeito {
      * @param alvo Ator a ser afetado pelo efeito.
      * @return true se o efeito foi aplicado corretamente, false caso contrário.
      */
-    public abstract  boolean aplicar (Ator alvo);
+    public abstract Resultado aplicar (Ator alvo);
 
 }

@@ -1,5 +1,7 @@
 package resources;
 
+import static resources.Atributo.HP;
+
 /**
  * Classe AlteracaoDeHP - Produz efeito de manipulação de HP no Ator.
  *
@@ -62,12 +64,8 @@ public class AlteracaoDeHP extends Efeito {
      * @return true se o efeito foi aplicado corretamente, false caso contrário.
      */
     @Override
-    public boolean aplicar (Ator alvo) {
-        if (alvo.getHP() <= 0) {
-            alvo.afetarHP(quantidade);
-            return true;
-        }
-        return false;
+    public Resultado aplicar (Ator alvo) {
+        return alvo.afetarAtributo(HP.posicao(), quantidade);
     }
 
 }

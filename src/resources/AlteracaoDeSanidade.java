@@ -1,5 +1,7 @@
 package resources;
 
+import static resources.Atributo.SANIDADE;
+
 /**
  * Classe AlteracaoDeSanidade - Produz efeito de manipulação na Sanidade de César.
  *
@@ -66,8 +68,8 @@ public class AlteracaoDeSanidade extends Efeito {
      * @return true se o efeito foi aplicado corretamente, false caso contrário.
      */
     @Override
-    public boolean aplicar (Ator alvo) {
-        return alvo.receberDano(quantidade);
+    public Resultado aplicar (Ator alvo) {
+        return alvo.afetarAtributo(SANIDADE.posicao(), quantidade);
     }
 
 }
