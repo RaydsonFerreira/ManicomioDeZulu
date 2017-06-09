@@ -1,57 +1,42 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package io;
+import java.util.List;
+/**
+ * Classe PalavrasDeComando - Controla as palavras válidas dos comandos.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * Ela tem como função de verificar se uma palavra dada é um comando.
+ *
+ * @author  Raydson Ferreira Carlota
+ * @version 2017.06.08
+ */
 
-public class PalavrasDeComando
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
-
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
-
-{
-    /** Attributes */
+public class PalavrasDeComando {
+    // um vetor constante que guarda todas as palavras de comandos validas
     private String[] comandosValidos;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
-    /**
-     * Operation
-     *
-     * @param 
-     * @return boolean
-     */
-    public boolean ehComando ( String  )
-    {
-        // ## Implementation preserve start class method.ehComando@boolean@@@String 
-        // ## Implementation preserve end class method.ehComando@boolean@@@String 
-    }
-    /**
-     * Operation
-     *
-     * @param 
-     * @return boolean
-     */
-    public boolean precisaDeSegundaPalavra ( String  )
-    {
-        // ## Implementation preserve start class method.precisaDeSegundaPalavra@boolean@@@String 
-        // ## Implementation preserve end class method.precisaDeSegundaPalavra@boolean@@@String 
-    }
-    /**
-     * Operation
-     *
-     * @return 
-     */
-    public PalavrasDeComando (  )
-    {
-        // ## Implementation preserve start class method.PalavrasDeComando@@@ 
-        // ## Implementation preserve end class method.PalavrasDeComando@@@ 
-    }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+    /**
+     * Construtor - inicializa as palavras de comando.
+     * 
+     * @param palavras Lista de String com as palavras válidas do jogo; 
+     */
+    public PalavrasDeComando(List<String> palavras) {
+        this.comandosValidos = palavras.toArray(new String[palavras.size()]);
+    }
+
+    /**
+     * Verifica se uma dada String eh uma palavra de comando valida.
+     * 
+     * @param umaString String a ser verificada
+     * @return true se a string dada eh um comando valido,
+     *         false se nao eh.
+     */
+    public boolean ehComando(String umaString) {
+        for(int i = 0; i < comandosValidos.length; i++) {
+            if(comandosValidos[i].equals(umaString))
+                return true;
+        }
+        return false;
+    }
+}
