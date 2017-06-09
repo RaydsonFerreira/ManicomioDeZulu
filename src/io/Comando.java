@@ -1,78 +1,59 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package io;
+/**
+ *Classe Comando - Controla os comandos do player.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * Ela tem como função pegar e os comandos da primeira e da segunda palavra
+ * através da classe {@link Entrada}. Todo comando que ocorrer no jogo passara
+ * por esta classe.
+ * 
+ * @author  Raydson Ferreira Carlota
+ * @version 2017.06.08
+ */
 
-public class Comando
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
-
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
-
-{
+public class Comando {
     /** Attributes */
     private String palavraDeComando;
     private String segundaPalavra;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
-    /**
-     * Operation
-     *
-     * @param 
-     * @param 
-     * @return 
-     */
-    public Comando ( String , String  )
-    {
-        // ## Implementation preserve start class method.Comando@@@@String@String 
-        // ## Implementation preserve end class method.Comando@@@@String@String 
-    }
-    /**
-     * Operation
-     *
-     * @return String
-     */
-    public String getPalavraDeComando (  )
-    {
-        // ## Implementation preserve start class method.getPalavraDeComando@String@@ 
-        // ## Implementation preserve end class method.getPalavraDeComando@String@@ 
-    }
-    /**
-     * Operation
-     *
-     * @return String
-     */
-    public String getSegundaPalavra (  )
-    {
-        // ## Implementation preserve start class method.getSegundaPalavra@String@@ 
-        // ## Implementation preserve end class method.getSegundaPalavra@String@@ 
-    }
-    /**
-     * Operation
-     *
-     * @return boolean
-     */
-    public boolean ehDesconhecido (  )
-    {
-        // ## Implementation preserve start class method.ehDesconhecido@boolean@@ 
-        // ## Implementation preserve end class method.ehDesconhecido@boolean@@ 
-    }
-    /**
-     * Operation
-     *
-     * @return boolean
-     */
-    public boolean temSegundaPalavra (  )
-    {
-        // ## Implementation preserve start class method.temSegundaPalavra@boolean@@ 
-        // ## Implementation preserve end class method.temSegundaPalavra@boolean@@ 
-    }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
-}
 
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
+    /**
+     * Construtor de um objeto comando. Primeira e segunda palavra devem ser 
+     * fornecidas, mas também elas podem ser null.
+     *
+     * @param primeiraPalavra Primeira palavra do comando.
+     * @param segundaPalavra Segunda palavra do comando.
+     */
+     public Comando(String primeiraPalavra, String segundaPalavra) {
+        this.palavraDeComando = primeiraPalavra;
+        this.segundaPalavra = segundaPalavra;
+    }
+    /**
+     * Retorna a palavra de comando (a primeira palavra) deste comando.
+     * Se o comando nao foi entendido, o resultado eh null.
+     * @return A palavra de comando.
+     */
+     public String getPalavraDeComando() {
+        return palavraDeComando;
+    }
+    /**
+     * @return A segunda palavra deste comando. Retorna null se 
+     * nao existe segunda palavra.
+     */
+    public String getSegundaPalavra() {
+        return segundaPalavra;
+    }
+    /**
+     * @return true se o comando nao foi entendido. 
+     */
+    public boolean ehDesconhecido() {
+        return (palavraDeComando == null);
+    }
+    /**
+     * @return true se o comando tem uma segunda palavra. 
+     */
+    public boolean temSegundaPalavra() {
+        return (segundaPalavra != null);
+    }
+}

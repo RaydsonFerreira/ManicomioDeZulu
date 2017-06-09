@@ -1,51 +1,56 @@
-// ## Implementation preserve start class opening. 
-// ## Implementation preserve end class opening. 
-import PalavrasDeComando;
-import Comando;
-// ## Implementation preserve start class import. 
-// ## Implementation preserve end class import. 
+package io;
+import java.util.Scanner;
+import java.util.List;
 
-public class Entrada
-// ## Implementation preserve start class extends. 
-// ## Implementation preserve end class extends. 
-
-// ## Implementation preserve start class inheritence. 
-// ## Implementation preserve end class inheritence. 
-
-{
-    /** Attributes */
+/**
+ * Classe Entrada - Controla operações de entrada de dados.
+ *
+ * Esta classe eh parte da aplicacao "World of Zuul - O Manicômio de Zulu".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ *
+ * Ela tem como função ler entrada de usuarios, que servirão como comando 
+ * para que o player possa controlar o seu personagem através de comandos.
+ * 
+ * @author  Raydson Ferreira Carlota
+ * @version 2017.06.08
+ */
+public class Entrada {
     private PalavrasDeComando palavrasDeComando;
-    private java.util.Scanner input;
-    // ## Implementation preserve start class attributes. 
-    // ## Implementation preserve end class attributes. 
-    /** Associations */
-    private Comando unnamed;
-    private PalavrasDeComando unnamed;
-    // ## Implementation preserve start class associations. 
-    // ## Implementation preserve end class associations. 
+    private Scanner input;
+    
     /**
-     * Operation
-     *
-     * @return Comando
+     * Construtor da classe Efeito
+     * 
+     * @param palavras Lista de String com as palavras válidas do jogo; 
      */
-    public Comando pegarComando (  )
-    {
-        // ## Implementation preserve start class method.pegarComando@Comando@@ 
-        // ## Implementation preserve end class method.pegarComando@Comando@@ 
+    public Entrada(List<String> palavras){
+        palavrasDeComando = new PalavrasDeComando(palavras);
+        input = new Scanner(System.in);
     }
+    
     /**
-     * Operation
-     *
-     * @return 
+     * Metodo para pegar um comando.
+     * 
+     * Pega um comando do usuario, divide em duas palavras, e cria 
+     * um objeto do tipo {@link Comando} e o retorna.
+     * 
+     * @return retorna um objeto do tipo {@link Comando}
      */
-    public Entrada (  )
-    {
-        // ## Implementation preserve start class method.Entrada@@@ 
-        // ## Implementation preserve end class method.Entrada@@@ 
+    public Comando pegarComando(){
+        String linha;
+        String palavra1 = null;
+        String palavra2 = null;
+        linha = input.nextLine();
+        
+        Scanner tokenizer = new Scanner(linha);
+        if(tokenizer.hasNext()) {
+            palavra1 = tokenizer.next();
+            if(tokenizer.hasNext()) {
+                palavra2 = tokenizer.next();
+            }
+        }
+        
+        Comando novoComando = new Comando(palavra1, palavra2);
+        return novoComando;
     }
-    // ## Implementation preserve start class other.operations. 
-    // ## Implementation preserve end class other.operations. 
 }
-
-// ## Implementation preserve start class closing. 
-// ## Implementation preserve end class closing. 
