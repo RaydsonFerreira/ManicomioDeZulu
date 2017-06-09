@@ -4,19 +4,11 @@ package resources;
  *
  * @author biiirl
  */
-public enum Atributo {
-    HP (0),
-    CAPACIDADE (1),
-    SANIDADE (2);
-    
-    private final int posicaoNaLista;
-    
-    Atributo (int posicaoNaLista) {
-        this.posicaoNaLista = posicaoNaLista;
-    }
-    
-    public int posicao () {
-        return posicaoNaLista;
-    }
-    
+public class Atributo {
+
+    public static final int ATRIBUTO_NAO_ENCONTRADO = -1;
+    public static final int HP = 0;
+    public static final int CAPACIDADE = 1;
+    public static final int SANIDADE = 2;
+
 }
