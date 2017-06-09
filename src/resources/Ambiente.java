@@ -30,7 +30,6 @@ public class Ambiente
      */
     public Ambiente (String descricao) {
         this.descricao = descricao;
-        
     }
     /**
      * Operation
